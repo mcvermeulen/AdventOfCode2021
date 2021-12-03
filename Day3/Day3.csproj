@@ -7,7 +7,7 @@
 
   <ItemGroup>
     <None Update="input.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 

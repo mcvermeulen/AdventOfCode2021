@@ -7,7 +7,8 @@ namespace Day2
     {
         static void Main()
         {
-            var lines = File.ReadAllLines("input.txt");
+            var path = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
+            var lines = File.ReadAllLines(Path.Combine(path + "..\\..\\..\\..\\input.txt"));
 
             Console.WriteLine($"Puzzle 1: {SolvePuzzle1(lines)}");
             Console.WriteLine($"Puzzle 2: {SolvePuzzle2(lines)}");
