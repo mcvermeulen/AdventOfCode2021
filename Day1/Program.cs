@@ -8,7 +8,7 @@ namespace Day1
         static void Main()
         {
             var path = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
-            var lines = File.ReadAllLines(Path.Combine(path + "..\\..\\..\\..\\input.txt"));
+            var lines = File.ReadAllLines(Path.Combine(path, "..", "..", "..", "input.txt"));
             var list = Array.ConvertAll(lines, int.Parse);
 
             Console.WriteLine($"Puzzle 1: {DetermineIncreases(list)}");

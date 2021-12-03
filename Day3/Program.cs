@@ -11,7 +11,7 @@ namespace Day3
         static void Main()
         {
             var path = Path.GetDirectoryName(AppDomain.CurrentDomain.BaseDirectory);
-            var lines = File.ReadAllLines(Path.Combine(path + "..\\..\\..\\..\\input.txt"));
+            var lines = File.ReadAllLines(Path.Combine(path, "..", "..", "..", "input.txt"));
 
             var gammaRating = GetGammaRating(lines);
             var epsilonRating = GetEpsilonRating(lines);
