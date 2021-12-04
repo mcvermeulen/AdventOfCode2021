@@ -1,6 +1,4 @@
-﻿using System.Text;
-
-var lines = ReadInputFile();
+﻿var lines = ReadInputFile();
 
 var gammaRating = GetGammaRating(lines);
 var epsilonRating = GetEpsilonRating(lines);
@@ -32,17 +30,17 @@ static int GetCo2ScrubberRating(string[] input)
 
 static string GetCommonBits(List<string> input, bool least = false)
 {
-    StringBuilder result = new();
+    string result = string.Empty;
 
     for (int i = 0; i < input[0].Length; i++)
     {
         if (least)
         {
-            result.Append(InvertCommonBit(GetMostCommonBit(input, i)));
+            result = string.Concat(result, InvertCommonBit(GetMostCommonBit(input, i)));
         }
         else
         {
-            result.Append(GetMostCommonBit(input, i));
+            result = string.Concat(result, GetMostCommonBit(input, i));
         }
     }
 
