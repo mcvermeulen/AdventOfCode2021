@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31205.134
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day3", "Day3\Day3.csproj", "{4236017E-F284-47CC-9BA3-20976B8A284D}"
 EndProject
@@ -14,7 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day4", "Day4\Day4.csproj", "{81972305-B75E-4114-AF10-AC3790031ABD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day4", "Day4\Day4.csproj", "{81972305-B75E-4114-AF10-AC3790031ABD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day5", "Day5\Day5.csproj", "{814A653E-2815-4841-9554-32904A5CE7A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,6 +40,10 @@ Global
 		{81972305-B75E-4114-AF10-AC3790031ABD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81972305-B75E-4114-AF10-AC3790031ABD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81972305-B75E-4114-AF10-AC3790031ABD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{814A653E-2815-4841-9554-32904A5CE7A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{814A653E-2815-4841-9554-32904A5CE7A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{814A653E-2815-4841-9554-32904A5CE7A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{814A653E-2815-4841-9554-32904A5CE7A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
