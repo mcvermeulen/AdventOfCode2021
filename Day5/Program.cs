@@ -51,19 +51,11 @@ class Line {
     public Coord Coord1 { get; private set; }
     public Coord Coord2 { get; private set; }
 
-    public bool IsHorizontal { get; private set; }
-    public bool IsVertical { get; private set; }
-    public bool Is45degrees { get; private set; }
-
     public Line(string line)
     {
         var row = (from v in line.Split(", ->".ToArray(), StringSplitOptions.RemoveEmptyEntries) select int.Parse(v)).ToArray();
  
         Coord1 = new Coord(row[0], row[1]);
         Coord2 = new Coord(row[2], row[3]);
-
-        if (Coord1.Y == Coord2.Y) IsHorizontal = true;
-        else if (Coord1.X == Coord2.X) IsVertical = true;
-        else if (Math.Abs(Coord1.X - Coord2.X) == Math.Abs(Coord1.Y - Coord2.Y)) Is45degrees = true;
     }
 }
