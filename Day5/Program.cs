@@ -1,85 +1,36 @@
-﻿var input = TransformInputToCoordinates();
-var field = CreateField(input);
+﻿var input = TransformInputToLines();
 
-var count = 0;
-for (int i = 0; i < field.GetLength(0); i++)
+Console.WriteLine($"Puzzle 1: {GetIntersections(input)}");
+Console.WriteLine($"Puzzle 2: {GetIntersections(input, true)}");
+
+static int GetIntersections(List<Line> lines, bool includeDiagonals = false)
 {
-    for (int j = 0; j < field.GetLength(1); j++)
+    var dic = new Dictionary<Coord, int>();
+    foreach (var line in lines)
     {
-        if (field[i, j] > 1) count++;
-    }
-}
-Console.WriteLine(count);
+        var difX = line.Coord2.X - line.Coord1.X;
+        var difY = line.Coord2.Y - line.Coord1.Y;
+        var directionX = Math.Sign(difX);
+        var directionY = Math.Sign(difY);
 
-
-static int[,] CreateField(List<Line> input)
-{
-    int maxX = input.Max(x => x.Coord1.X > x.Coord2.X ? x.Coord1.X : x.Coord2.X);
-    int maxY = input.Max(x => x.Coord1.Y > x.Coord2.Y ? x.Coord1.Y : x.Coord2.Y);
-
-    var field = new int[maxY + 1, maxX + 1];
-
-    foreach(Line line in input)
-    {
-        if (line.IsHorizontal)
+        if (includeDiagonals || directionX == 0 || directionY == 0)
         {
-            int startX = line.Coord1.X < line.Coord2.X ? line.Coord1.X : line.Coord2.X;
-            int endX = line.Coord1.X < line.Coord2.X ? line.Coord2.X : line.Coord1.X;
-            for (int i = startX; i <= endX; i++)
+            var points =
+                from i in Enumerable.Range(0, Math.Max(Math.Abs(difX), Math.Abs(difY)) + 1)
+                select new Coord(line.Coord1.X + i * directionX, line.Coord1.Y + i * directionY);
+
+            foreach (var point in points)
             {
-                field[line.Coord1.Y, i]++;
-            }
-        } 
-        else if (line.IsVertical) 
-        {
-            int startY = line.Coord1.Y < line.Coord2.Y ? line.Coord1.Y : line.Coord2.Y;
-            int endY = line.Coord1.Y < line.Coord2.Y ? line.Coord2.Y : line.Coord1.Y;
-            for (int j = startY; j <= endY; j++)
-            {
-                field[j, line.Coord1.X]++;
-            }
-        } 
-        else if (line.Is45degrees)
-        {
-            if (line.Coord1.X < line.Coord2.X)
-            {
-                if (line.Coord1.Y < line.Coord2.Y)
-                {
-                    for (int k = line.Coord1.X, l = line.Coord1.Y; k <= line.Coord2.X; k++, l++)
-                    {
-                        field[l, k]++;
-                    }
-                } else
-                {
-                    for (int k = line.Coord1.X, l = line.Coord1.Y; k <= line.Coord2.X; k++, l--)
-                    {
-                        field[l, k]++;
-                    }
-                }
-            } else
-            {
-                if (line.Coord1.Y < line.Coord2.Y)
-                {
-                    for (int k = line.Coord1.X, l = line.Coord1.Y; k >= line.Coord2.X; k--, l++)
-                    {
-                        field[l, k]++;
-                    }
-                }
-                else
-                {
-                    for (int k = line.Coord1.X, l = line.Coord1.Y; k >= line.Coord2.X; k--, l--)
-                    {
-                        field[l, k]++;
-                    }
-                }
+                dic[point] = dic.GetValueOrDefault(point, 0) + 1;
             }
         }
+       
     }
-
-    return field;
+    return dic.Count(item => item.Value > 1);
 }
 
-static List<Line> TransformInputToCoordinates()
+
+static List<Line> TransformInputToLines()
 {
     List<Line> input = new();
     foreach (var line in ReadInputFile())
@@ -93,8 +44,6 @@ static string[] ReadInputFile()
 {
     return File.ReadAllLines(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "input.txt"));
 }
-
-
 
 record Coord(int X, int Y);
 
