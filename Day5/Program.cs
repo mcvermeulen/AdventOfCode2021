@@ -108,11 +108,10 @@ class Line {
 
     public Line(string line)
     {
-        var row = line.Split(' ', StringSplitOptions.RemoveEmptyEntries);
-        var c1 = row[0].Split(',');
-        var c2 = row[2].Split(',');   
-        Coord1 = new Coord(int.Parse(c1[0]), int.Parse(c1[1]));
-        Coord2 = new Coord(int.Parse(c2[0]), int.Parse(c2[1]));
+        var row = (from v in line.Split(", ->".ToArray(), StringSplitOptions.RemoveEmptyEntries) select int.Parse(v)).ToArray();
+ 
+        Coord1 = new Coord(row[0], row[1]);
+        Coord2 = new Coord(row[2], row[3]);
 
         if (Coord1.Y == Coord2.Y) IsHorizontal = true;
         else if (Coord1.X == Coord2.X) IsVertical = true;
