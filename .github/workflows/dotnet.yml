@@ -21,4 +21,4 @@ jobs:
     - name: Build
       run: dotnet build --no-restore --configuration Release
     - name: Run
-      run: dotnet run --configuration Release --project Day7
+      run: dotnet run --configuration Release --project Day8
